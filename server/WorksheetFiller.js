@@ -1,15 +1,13 @@
-const XLSX = require("xlsx");
-const filename = "export29913.xlsx";
+import XLSX from "xlsx";
+const filename = "Uploaded\\export29913.xlsx";
 var workbook = XLSX.readFile(filename);
 const sheetName = workbook.SheetNames[0];
-console.log(sheetName);
 const worksheet = workbook.Sheets[sheetName];
 const numberOfRowsFilled = Math.max(
   ...Object.keys(worksheet).map((cellAddress) =>
     cellAddress.replace(/[^0-9]/g, "")
   )
 );
-console.log(numberOfRowsFilled);
 const lastColumn = XLSX.utils.encode_col(
   Math.max(
     ...Object.keys(worksheet).map((cellAddress) =>
@@ -27,4 +25,6 @@ for (start; start <= lastColumn.charCodeAt(0); start++) {
   }
 }
 
-XLSX.writeFile(workbook, "modified_export29913.xlsx");
+XLSX.writeFile(workbook, `modified\\${filename}`);
+
+export { numberOfRowsFilled };

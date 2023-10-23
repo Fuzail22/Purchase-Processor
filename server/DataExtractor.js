@@ -57,10 +57,10 @@ mongoose.connect("mongodb://localhost:27017/PurchaseProcessor", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-// Supplier.insertMany(suppliers)
-//   .then(() => {
-//     console.log("All suppliers saved.");
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
+Supplier.insertMany(suppliers)
+  .then(() => {
+    console.log("All suppliers saved.");
+  })
+  .catch((err) => {
+    console.log(err);
+  });

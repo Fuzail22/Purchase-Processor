@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 
-const purchaseOrderSchema = new mongoose.Schema({
-  PO_Number: String,
-  Description: String,
-});
+// const purchaseOrderSchema = new mongoose.Schema({
+//   PO_Number: String,
+//   Description: String,
+// });
 
 const docketSchema = new mongoose.Schema(
   {
@@ -13,7 +13,8 @@ const docketSchema = new mongoose.Schema(
     no_of_hours_worked: Number,
     rate_per_hour: Number,
     supplierName: String,
-    purchaseOrder: purchaseOrderSchema,
+    description: String,
+    po_nummber: String,
   },
   { versionKey: false }
 );

@@ -67,6 +67,6 @@ function fillWorksheet(fname) {
         console.log(currentColumn, i);
     }
   }
-  XLSX.writeFile(workbook, `${process.cwd()}/Modified/${filename}`);
+  XLSX.writeFile(workbook, `${filename}`);
 }
 export { numberOfRowsFilled, fillWorksheet, po_number, supplier, decsription };

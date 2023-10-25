@@ -10,7 +10,7 @@ function App() {
 
   let getDockets = useCallback(() => {
     axios
-      .get("http://localhost:6001/docket")
+      .get("https://purchaseprocessor.onrender.com/docket")
       .then((response) => {
         setDockets(response.data);
       })
@@ -40,7 +40,7 @@ function App() {
     formData.append("file", selectedFile);
 
     axios
-      .post("http://localhost:6001/upload", formData, config)
+      .post("https://purchaseprocessor.onrender.com/upload", formData, config)
       .then((response) => {
         console.log(response);
       })

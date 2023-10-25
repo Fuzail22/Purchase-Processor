@@ -12,6 +12,7 @@ import {
   decsription,
 } from "./WorksheetFiller.js";
 import { getSuppliersInfo } from "./DataExtractor.js";
+
 const app = express();
 const PORT = process.env.PORT;
 const connStr = process.env.mongoDBCloudConnect;
@@ -22,7 +23,7 @@ app.use(express.json());
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "./opt/render/project/src/server/uploaded");
+    cb(null, `${process.cwd()}/uploaded`);
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);

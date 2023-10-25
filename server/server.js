@@ -23,7 +23,7 @@ app.use(express.json());
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, `${process.cwd()}/uploaded`);
+    cb(null, `${process.cwd()}/Uploaded`);
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
@@ -54,7 +54,7 @@ app.post("/upload", upload.single("file"), (req, res) => {
     return;
   }
   getSuppliersInfo(Gfilename);
-  res.status(201).send("File uploaded!");
+  res.status(201).send("File Uploaded!");
 });
 
 app.get("/allsuppliers", (req, res) => {

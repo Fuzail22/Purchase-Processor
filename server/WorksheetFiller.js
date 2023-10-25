@@ -17,8 +17,8 @@ function fillWorksheet(fname) {
   po_number = null;
   supplier = null;
   decsription = null;
-  const filename = `${process.cwd()}/uploaded/${fname}`;
-  // const filename = `uploaded\\${fname}`;
+  const filename = `${process.cwd()}/Uploaded/${fname}`;
+  // const filename = `Uploaded\\${fname}`;
   var workbook = XLSX.readFile(filename);
   const sheetName = workbook.SheetNames[0];
   const worksheet = workbook.Sheets[sheetName];
@@ -67,6 +67,6 @@ function fillWorksheet(fname) {
         console.log(currentColumn, i);
     }
   }
-  XLSX.writeFile(workbook, `${process.cwd()}/modified/${filename}`);
+  XLSX.writeFile(workbook, `${process.cwd()}/Modified/${filename}`);
 }
 export { numberOfRowsFilled, fillWorksheet, po_number, supplier, decsription };

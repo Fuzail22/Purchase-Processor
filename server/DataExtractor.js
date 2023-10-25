@@ -11,7 +11,7 @@ import "dotenv/config";
 
 async function getSuppliersInfo(fname) {
   const suppliers = [];
-  const filename = `${process.cwd()}/uploaded/${fname}`;
+  const filename = `${process.cwd()}/Uploaded/${fname}`;
   var workbook = XLSX.readFile(filename);
   const sheetName = workbook.SheetNames[0];
   const worksheet = workbook.Sheets[sheetName];

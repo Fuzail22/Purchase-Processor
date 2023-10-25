@@ -29,6 +29,8 @@ jobs:
       - name: Build
         working-directory: ./client
         run: npm run build
+        env:
+         CI: ""
 
       - name: Deploy
         uses: crazy-max/ghaction-github-pages@v1

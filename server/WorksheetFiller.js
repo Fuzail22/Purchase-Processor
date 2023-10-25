@@ -11,13 +11,14 @@ let lastColumn, numberOfRowsFilled, po_number, supplier, decsription;
 //     if (worksheet[`${currentColumn}1`].v.toLowerCase() == "description")
 //       decsription = `${currentColumn}1`;
 //   }
-// }
+// }/opt/render/project/src/server/
 
 function fillWorksheet(fname) {
   po_number = null;
   supplier = null;
   decsription = null;
-  const filename = `Uploaded\\${fname}`;
+  const filename = `uploaded/${fname}`;
+  // const filename = `uploaded\\${fname}`;
   var workbook = XLSX.readFile(filename);
   const sheetName = workbook.SheetNames[0];
   const worksheet = workbook.Sheets[sheetName];
@@ -66,6 +67,6 @@ function fillWorksheet(fname) {
         console.log(currentColumn, i);
     }
   }
-  XLSX.writeFile(workbook, `modified\\${filename}`);
+  XLSX.writeFile(workbook, `modified/${filename}`);
 }
 export { numberOfRowsFilled, fillWorksheet, po_number, supplier, decsription };

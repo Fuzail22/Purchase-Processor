@@ -12,3 +12,10 @@ Watch demo here: https://drive.google.com/file/d/1UTVhOGWQ82cMIp3gogaPXKGYlAbAx5
 - A real time drop down for supplier and Purchase order based on the file uploaded.
 - Download option to download the created dockets as CSV.
 
+## Easily configurable features
+- For now the old suppliers information get removed for every new file upload, this can be simply changed to remember all suppliers informations of the past.
+- Table Virtaulization can be done when dealing with larger number of dockets.
+
+## Easily configurable UX
+- Acknowledgment popup for every action performed.
+- For now errors and correction information are displayed in console, it can modified to show on-screen for layman.

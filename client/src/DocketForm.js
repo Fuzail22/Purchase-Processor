@@ -144,7 +144,7 @@ function Docket(props) {
             ref={supplierRef}
             required
           >
-            <option value={"DEFAULT"} hidden>
+            <option value="" hidden>
               Select the Supplier
             </option>
             {suppliersdata.map((sup) => {
@@ -167,7 +167,7 @@ function Docket(props) {
             ref={poRef}
             required
           >
-            <option value={"DEFAULT"} hidden>
+            <option value="" hidden>
               Select the Description
             </option>
             {posdata.map((po) => {

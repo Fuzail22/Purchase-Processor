@@ -4,27 +4,31 @@ import { useCallback, useMemo, useState } from "react";
 import Docket from "./DocketForm";
 import Papa from "papaparse";
 import saveAs from "file-saver";
+import LoadingOverlay from "./LoadingOverlay";
 function App() {
   const [docket, setDocket] = useState(false);
   const [dockets, setDockets] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   let getDockets = useCallback(() => {
     axios
       .get("https://purchaseprocessor.onrender.com/docket")
       .then((response) => {
         setDockets(response.data);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(
           "The following error occured while fetching dockets: ",
           err
         );
+        setLoading(false);
       });
   }, []);
 
   useMemo(() => getDockets(), [getDockets]);
 
   function handleFileChange(e) {
+    setLoading(true);
     if (!e.target.files[0]) {
       console.log("no file selected");
       return;
@@ -38,14 +42,15 @@ function App() {
 
     const formData = new FormData();
     formData.append("file", selectedFile);
-
     axios
       .post("https://purchaseprocessor.onrender.com/upload", formData, config)
       .then((response) => {
         console.log(response);
+        setLoading(false);
       })
       .catch((error) => {
         console.log("Error uploading file", error);
+        setLoading(false);
       });
   }
   function jsonToCsv(data) {
@@ -60,6 +65,7 @@ function App() {
   };
   return (
     <div className="App">
+      {loading && <LoadingOverlay />}
       <header>
         <label>
           Upload PO File
@@ -110,7 +116,11 @@ function App() {
       {docket && (
         <div className="Overlay">
           <div className="overlay-form">
-            <Docket setDocket={setDocket} getDockets={getDockets} />
+            <Docket
+              setDocket={setDocket}
+              getDockets={getDockets}
+              setLoading={setLoading}
+            />
           </div>
         </div>
       )}

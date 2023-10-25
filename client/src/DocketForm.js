@@ -15,25 +15,26 @@ function Docket(props) {
     poRef = useRef(null);
 
   useEffect(() => {
+    props.setLoading(true);
     axios
       .get("https://purchaseprocessor.onrender.com/allsuppliers")
       .then((response) => {
         suppliersdata = response.data;
         console.log(suppliersdata);
         setSuppliers(true);
-        // console.log(suppliers.map((sup) => sup.supplier));
-        // console.log(typeof suppliers);
+        props.setLoading(false);
       })
       .catch((err) => {
         console.log(
           "The following error occured while fetching suppliers: ",
           err
         );
+        props.setLoading(false);
       });
   }, []);
 
-  const getPOs = useCallback((e) => {
-    // console.log(e.target.value);
+  const getPOs = useCallback((props, e) => {
+    props.setLoading(true);
     const suppName = e.target.value;
     axios
       .get(`https://purchaseprocessor.onrender.com/supplier?supp=${suppName}`)
@@ -41,17 +42,18 @@ function Docket(props) {
         console.log(response.data.purchaseOrders);
         setPosdata(response.data.purchaseOrders);
         setPO(true);
-        // console.log(suppliers.map((sup) => sup.supplier));
-        // console.log(typeof suppliers);
+        props.setLoading(false);
       })
       .catch((err) => {
         console.log(
           "The following error occured while fetching suppliers: ",
           err
         );
+        props.setLoading(false);
       });
   }, []);
   const createHandler = useCallback((props, e) => {
+    props.setLoading(true);
     e.preventDefault();
     const [description, poNumber] = poRef.current.value.split(",");
     console.log(nameRef.current.value);
@@ -79,12 +81,14 @@ function Docket(props) {
         document.getElementById("docketForm").reset();
         props.setDocket(false);
         props.getDockets();
+        props.setLoading(false);
       })
       .catch((err) => {
         console.log(
           "The following error occured while creating the docket: ",
           err
         );
+        props.setLoading(false);
       });
   }, []);
   return (
@@ -139,7 +143,7 @@ function Docket(props) {
           Supplier:
           <select
             className="overlay-input"
-            onChange={getPOs}
+            onChange={(event) => getPOs(props, event)}
             defaultValue={"DEFAULT"}
             ref={supplierRef}
             required

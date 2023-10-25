@@ -14,7 +14,7 @@ import {
 import { getSuppliersInfo } from "./DataExtractor.js";
 const app = express();
 const PORT = process.env.PORT;
-const connStr = process.env.mongoDBConnect;
+const connStr = process.env.mongoDBCloudConnect;
 let Gfilename;
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
@@ -31,10 +31,13 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-mongoose.connect(connStr, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose
+  .connect(connStr, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then((res) => console.log("mongoDB connected successfully"))
+  .catch((err) => console.log("Error while connecting to mongoDB"));
 
 app.get("/", (req, res) => {
   res.status(200).send("Welcome to Purchase Processor");

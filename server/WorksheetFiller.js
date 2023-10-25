@@ -1,17 +1,17 @@
 import XLSX from "xlsx";
 let lastColumn, numberOfRowsFilled, po_number, supplier, decsription;
 
-function getHeader() {
-  for (let start = 65; start <= lastColumn.charCodeAt(0); start++) {
-    let currentColumn = String.fromCharCode(start);
-    if (worksheet[`${currentColumn}1`].v.toLowerCase() == "po number")
-      po_number = `${currentColumn}1`;
-    if (worksheet[`${currentColumn}1`].v.toLowerCase() == "supplier")
-      supplier = `${currentColumn}1`;
-    if (worksheet[`${currentColumn}1`].v.toLowerCase() == "description")
-      decsription = `${currentColumn}1`;
-  }
-}
+// function getHeader() {
+//   for (let start = 65; start <= lastColumn.charCodeAt(0); start++) {
+//     let currentColumn = String.fromCharCode(start);
+//     if (worksheet[`${currentColumn}1`].v.toLowerCase() == "po number")
+//       po_number = `${currentColumn}1`;
+//     if (worksheet[`${currentColumn}1`].v.toLowerCase() == "supplier")
+//       supplier = `${currentColumn}1`;
+//     if (worksheet[`${currentColumn}1`].v.toLowerCase() == "description")
+//       decsription = `${currentColumn}1`;
+//   }
+// }
 
 function fillWorksheet(fname) {
   po_number = null;

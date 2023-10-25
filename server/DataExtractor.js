@@ -7,6 +7,7 @@ import {
 import XLSX from "xlsx";
 import mongoose from "mongoose";
 import { Supplier } from "./model/suppliers.model.js";
+import "dotenv/config";
 
 async function getSuppliersInfo(fname) {
   const suppliers = [];
@@ -14,7 +15,7 @@ async function getSuppliersInfo(fname) {
   var workbook = XLSX.readFile(filename);
   const sheetName = workbook.SheetNames[0];
   const worksheet = workbook.Sheets[sheetName];
-
+  const connStr = process.env.mongoDBCloudConnect;
   for (let i = 2; i <= numberOfRowsFilled; i++) {
     const supplierName = worksheet[`${supplier}${i}`].v;
     const poNumber = worksheet[`${po_number}${i}`].v;
@@ -43,10 +44,17 @@ async function getSuppliersInfo(fname) {
     }
   }
   if (suppliers.length > 0) {
-    await mongoose.connect("mongodb://localhost:27017/PurchaseProcessor", {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    mongoose
+      .connect(connStr, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      })
+      .then((res) =>
+        console.log("mongoDB connected successfully for data extractor")
+      )
+      .catch((err) =>
+        console.log("Error while connecting to mongoDB in data extractor")
+      );
     const collection = mongoose.connection.collection("suppliers");
     collection
       .drop()

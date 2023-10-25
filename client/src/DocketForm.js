@@ -16,7 +16,7 @@ function Docket(props) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:6001/allsuppliers")
+      .get("https://purchaseprocessor.onrender.com/allsuppliers")
       .then((response) => {
         suppliersdata = response.data;
         console.log(suppliersdata);
@@ -36,7 +36,7 @@ function Docket(props) {
     // console.log(e.target.value);
     const suppName = e.target.value;
     axios
-      .get(`http://localhost:6001/supplier?supp=${suppName}`)
+      .get(`https://purchaseprocessor.onrender.com/supplier?supp=${suppName}`)
       .then((response) => {
         console.log(response.data.purchaseOrders);
         setPosdata(response.data.purchaseOrders);
@@ -73,7 +73,7 @@ function Docket(props) {
       po_nummber: poNumber,
     };
     axios
-      .post(`http://localhost:6001/docket`, formData)
+      .post(`https://purchaseprocessor.onrender.com/docket`, formData)
       .then((response) => {
         console.log(response);
         document.getElementById("docketForm").reset();
@@ -129,7 +129,7 @@ function Docket(props) {
         Rate Per Hour
         <input
           className="overlay-input"
-          type="text"
+          type="number"
           ref={rateRef}
           required
         ></input>

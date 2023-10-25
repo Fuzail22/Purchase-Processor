@@ -1,6 +1,6 @@
 import XLSX from "xlsx";
 let lastColumn, numberOfRowsFilled, po_number, supplier, decsription;
-
+// console.log(process.cwd());
 // function getHeader() {
 //   for (let start = 65; start <= lastColumn.charCodeAt(0); start++) {
 //     let currentColumn = String.fromCharCode(start);
@@ -17,7 +17,7 @@ function fillWorksheet(fname) {
   po_number = null;
   supplier = null;
   decsription = null;
-  const filename = `./opt/render/project/src/server/uploaded/${fname}`;
+  const filename = `${process.cwd()}/uploaded/${fname}`;
   // const filename = `uploaded\\${fname}`;
   var workbook = XLSX.readFile(filename);
   const sheetName = workbook.SheetNames[0];
@@ -67,9 +67,6 @@ function fillWorksheet(fname) {
         console.log(currentColumn, i);
     }
   }
-  XLSX.writeFile(
-    workbook,
-    `./opt/render/project/src/server/modified/${filename}`
-  );
+  XLSX.writeFile(workbook, `${process.cwd()}/modified/${filename}`);
 }
 export { numberOfRowsFilled, fillWorksheet, po_number, supplier, decsription };

@@ -19,3 +19,8 @@ Watch demo here: https://drive.google.com/file/d/1UTVhOGWQ82cMIp3gogaPXKGYlAbAx5
 ## Easily configurable UX
 - Acknowledgment popup for every action performed.
 - For now errors and correction information are displayed in console, it can modified to show on-screen for layman.
+
+## Future Enhancements
+- Fresh set of dockets can be created. 
+- More than on docket file that can be managed at time.
+- edit and delete dockets.

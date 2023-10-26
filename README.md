@@ -9,7 +9,7 @@ Watch demo here: https://drive.google.com/file/d/1UTVhOGWQ82cMIp3gogaPXKGYlAbAx5
   3. Extract the values from those three columns.
   4. Stores it in easily accessible format in the database.
 - Provides a docket creater.
-- A real time drop down for supplier and Purchase order based on the file uploaded.
+- A real time drop down for supplier and Purchase order based on the PO file uploaded.
 - Download option to download the created dockets as CSV.
 
 ## Easily configurable features
@@ -22,5 +22,6 @@ Watch demo here: https://drive.google.com/file/d/1UTVhOGWQ82cMIp3gogaPXKGYlAbAx5
 
 ## Future Enhancements
 - Fresh set of dockets can be created. 
-- More than on docket file that can be managed at time.
-- edit and delete dockets.
+- More than one docket file that can be managed at time.
+- edit and delete individual dockets.
+- delete all dockets

@@ -14,6 +14,7 @@ Watch demo here: https://drive.google.com/file/d/1UTVhOGWQ82cMIp3gogaPXKGYlAbAx5
 
 ## Easily configurable features
 - For now, the old suppliers information gets removed for every new file upload, this can be simply changed to remember all suppliers information of the past.
+- Download the filled PO file.
 - Table Virtualization can be done when dealing with a larger number of dockets.
 
 ## Easily configurable UX
